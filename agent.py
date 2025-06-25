@@ -31,6 +31,10 @@ BASE_DIR = os.getcwd()  # gets the current working directory
 SAVE_PATH = os.path.join(BASE_DIR, 'download')
 LOG_FILE = os.path.join(BASE_DIR, "email_download_log.xlsx")
 
+# Create download folder if it doesn't exist
+os.makedirs(SAVE_PATH, exist_ok=True)
+print(f"📁 Download folder ready: {SAVE_PATH}")
+
 def get_gmail_service():
     """Initialize Gmail service with credentials."""
     creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -115,7 +119,6 @@ def load_log_data():
         return pd.DataFrame()
 
 
-
 def save_log_data(df):
     """Save log data to Excel file."""
     try:
@@ -124,7 +127,6 @@ def save_log_data(df):
         print(f"Log data saved to {LOG_FILE}")
     except Exception as e:
         print(f"Error saving log data: {e}")
-
 
 
 def generate_message_hash(msg_data):
