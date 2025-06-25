@@ -1,0 +1,16 @@
+.env
+credentials.json
+
+token.json
+
+gmail_agent2.ipynb
+
+*.xlsx
+
+download
+
+output
+
+results
+
+__pycache__
